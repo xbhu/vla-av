@@ -1,0 +1,85 @@
+# ================================
+# Data (never commit large data files)
+# ================================
+data/raw/
+data/processed/
+*.csv
+*.parquet
+*.h5
+*.hdf5
+*.pcd
+*.bin
+*.bag
+
+# Exception: keep README files in data/
+!data/README.md
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# ================================
+# Model weights and checkpoints
+# ================================
+*.pth
+*.pt
+*.ckpt
+*.pkl
+checkpoints/
+saved_models/
+runs/
+
+# ================================
+# Jupyter Notebooks outputs
+# ================================
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# ================================
+# Python
+# ================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ================================
+# Environment & secrets
+# ================================
+.env
+.env.local
+*.key
+*_key.json
+credentials.json
+config_local.yaml
+
+# ================================
+# OS & editors
+# ================================
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ================================
+# Results (large outputs)
+# ================================
+results/raw_outputs/
+wandb/
+mlruns/
+
+# Keep figures
+!results/figures/
+
+# Claude Code internal
+.claude/
