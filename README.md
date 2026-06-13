@@ -1,21 +1,86 @@
-# [Paper Title]
+# VLA for Autonomous Driving — A Systematic Learning & Research Series
 
-> **📄 Paper:** [Full Citation — Authors, Year, Journal, DOI]  
-> **🗂️ Status:** [ ] Under Review &nbsp;|&nbsp; [ ] Accepted &nbsp;|&nbsp; [x] Published  
-> **👤 Contact:** [Student Name] · [PSU Email] · [XB's email as PI]
+> **🗂️ Status:** Active — learning series in progress &nbsp;|&nbsp; Phase 0 (theory) → Phase 1 (use cases)
+> **👤 Maintainer:** Xianbiao (XB) Hu · Smart Mobility Lab, The Pennsylvania State University
+> **🧭 Focus:** Not chasing SOTA — characterizing *where and why* VLA driving policies fail, with an eye toward embodied transportation applications (ATMA, CDA, work-zone automation).
 
 ---
 
 ## Overview
 
-<!-- 2–3 sentences: what problem this addresses, what the code does, who it's for. -->
-<!-- Write for two audiences: (1) a DOT engineer, (2) a transportation researcher. -->
+This repository documents a structured, hands-on study of **Vision-Language-Action (VLA)** models for autonomous driving, following the same "theory first, then runnable use cases on open datasets" rhythm used in the lab's earlier LLM and VLM series.
 
-This repository contains the code and data resources accompanying the paper:
+It is written for two audiences. For a **transportation researcher**, it is a reproducible scaffold for understanding what VLA adds over a VLM (an *action representation* plus a *closed perception-action loop*) and why that loop makes honest evaluation hard. For a **DOT / practitioner** reader, the recurring takeaway is concrete: strong open-loop numbers (e.g., nuScenes L2) can hide an unsafe policy, and this repo shows how to expose that gap.
 
-> **[Paper Title]**  
-> [Author 1], [Author 2], Xianbiao Hu  
-> *[Journal Name]*, [Year]. DOI: [https://doi.org/xxx](https://doi.org/xxx)
+The distinctive angle — consistent with the lab's prior work — is **adversarial evaluation and capability-boundary characterization** rather than leaderboard performance. The learning series runs on *generic* open driving data; applying VLA to the lab's own embodied scenarios (ATMA leader-follower, cooperative driving automation, work-zone automation) is a downstream research phase that will require lab-collected data and is intentionally out of scope here.
+
+---
+
+## Learning Roadmap
+
+### Phase 0 — Theory (the foundation)
+
+Concept-level groundwork before any code:
+
+- **Positioning** — VLA as a *branch of the VLM lineage* (LLM → VLM → VLA), not a new foundational paradigm.
+- **Embodied vs. agentic vs. physical AI** — why VLA requires a moving, sensor-bearing agent, and how that differs from virtual LLM agents.
+- **Evaluation philosophy** — open-loop vs. closed-loop vs. pseudo-closed-loop (NAVSIM), and the "ego status is all you need" critique of open-loop metrics.
+- **Action representation** — two orthogonal axes: *output level* (trajectory vs. low-level control) and *decoding mechanism* (discrete tokenization vs. continuous regression vs. diffusion), unified by the core problem of **future multimodality**.
+
+Theory notes live under [`docs/`](docs/).
+
+### Phase 1 — Use Cases (three clusters)
+
+The series spine: **VLA = VLM + (action representation) + (closed perception-action loop).** Each cluster maps to one part of that spine.
+
+**Cluster A — Action representation** *(what VLA adds, part 1)*
+
+| UC | Goal | Model / Data |
+|----|------|--------------|
+| **A1** | Run baseline inference; understand the I/O contract; compute open-loop L2 / collision | OpenDriveVLA-0.5B / nuScenes |
+| **A2** | Build an action codebook by hand; compare token vs. regression vs. diffusion decoding on the **same** trajectory GT; quantify multimodal coverage (does regression mode-collapse?) | AutoVLA codebook tooling + custom heads / nuScenes |
+| **A3** | LoRA fine-tune the action representation; test whether it learns planning or **memorizes** templated planning QA | AutoVLA / DriveLM |
+
+**Cluster B — Closed loop & the evaluation illusion** *(what VLA adds, part 2 — the methodological spine)*
+
+| UC | Goal | Model / Data |
+|----|------|--------------|
+| **B1** | Ego-state-only MLP baseline → quantify how much open-loop L2 is mere kinematic extrapolation; turn the "open-loop illusion" into hard evidence | Custom MLP / nuScenes |
+| **B2** | NAVSIM PDMS consequence-aware evaluation → show that open-loop-good can be closed-loop-bad | AutoVLA / NAVSIM (CARLA/Bench2Drive optional) |
+
+**Cluster C — Capability boundaries & failure characterization** *(the lab's signature angle; extends prior VLM findings)*
+
+| UC | Goal | Extends prior finding |
+|----|------|-----------------------|
+| **C1** | Is reasoning causal or decorative? Toggle CoT (fast/slow) and check whether the trajectory changes | temporal-language illusion |
+| **C2** | Command following: counterfactually swap the driver command (straight ↔ left) and test whether the action follows | text-compliance dependence |
+| **C3** | Perception grounding: mask / perturb perception inputs and measure action change (scene-blind test) | geometric-reasoning ceiling |
+| **C4** | **Reasoning–action coherence**: detect "says one thing, does another" (verbally yields but trajectory does not) — capstone, strongest publication potential | chain-coherence collapse |
+
+---
+
+## Models
+
+| Model | Role | Notes |
+|-------|------|-------|
+| **OpenDriveVLA-0.5B** | Entry / on-ramp | Checkpoint on Hugging Face; single-GPU inference. Input is **3D structured perception tokens** (UniAD / mmdet3d upstream), not raw images; **open-loop only**. AAAI 2026. |
+| **AutoVLA** | Primary workhorse | Action codebook + CoT (fast/slow) + RFT (GRPO); raw visual input; preprocessing consumes DriveLM `v1_1_train_nus.json`; supports NAVSIM PDMS and CARLA. NeurIPS 2025. |
+
+Rule of thumb for this series: **OpenDriveVLA gets you in the door (A1); AutoVLA does most of the work (A2–C4).**
+
+---
+
+## Datasets & Benchmarks
+
+| Dataset | Role | Loop type | Notes |
+|---------|------|-----------|-------|
+| **nuScenes** | Core | Open-loop | L2 / collision; primary substrate for A1, A2, B1, C1–C4 |
+| **DriveLM-nuScenes** | Core | Open-loop | Planning QA is heavily templated — relevant to the A3 memorization test |
+| **NAVSIM** | Evaluation | Pseudo-closed-loop | Real data + lightweight rollout (PDMS); no rendering; much lighter than CARLA |
+| **CoVLA** | Optional | Open-loop | Real-world trajectory + caption; more diverse than templated DriveLM |
+| **CARLA / Bench2Drive** | Optional | Closed-loop | Full simulator; heavy (GPU rendering); reserved for an overflow/HPC environment |
+
+> **No open ATMA / CDA / work-zone VLA dataset exists.** The learning series builds VLA capability on generic urban-driving data; embodied transportation applications are a separate, later phase.
 
 ---
 
@@ -23,113 +88,106 @@ This repository contains the code and data resources accompanying the paper:
 
 ```
 .
-├── data/
-│   ├── raw/            # Raw data (or external link — see data/README.md)
-│   ├── processed/      # Preprocessed inputs ready for model/analysis
-│   └── README.md       # Data description, source, and download instructions
+├── docs/                              # Phase 0 theory notes, design docs
 │
-├── src/                # Core source code (importable modules)
-│   ├── model/
-│   ├── utils/
-│   └── __init__.py
+├── sourcecode/                        # Use-case scripts (usecaseNX_*.py)
+│   ├── clusterA_action_representation/
+│   ├── clusterB_evaluation_loop/
+│   └── clusterC_capability_boundaries/
 │
-├── experiments/        # Entry-point scripts to reproduce paper results
-│   ├── train.py
-│   ├── evaluate.py
-│   └── configs/        # YAML/JSON config files (hyperparameters, paths)
+├── datasets/                          # nuScenes / DriveLM / NAVSIM (download instructions below)
+│   └── README.md
 │
-├── notebooks/          # Exploratory analysis and result visualization
-│   └── demo.ipynb
+├── models/                            # Pointers / checkouts for OpenDriveVLA, AutoVLA
 │
-├── results/
-│   └── figures/        # Key figures from the paper
+├── outputs/                           # Experiment outputs (mirrors sourcecode/ layout)
 │
-├── requirements.txt    # Python dependencies
+├── notebooks/                         # Exploratory analysis & result visualization
+│
+├── environment.yml                    # Conda environment
+├── requirements.txt                   # Python dependencies
 ├── LICENSE
 └── README.md
 ```
+
+Script naming convention: `usecaseNX_description_model_dataset.py` (e.g., `usecaseA1_baseline_inference_opendrivevla_nuscenes.py`).
 
 ---
 
 ## Getting Started
 
-### 1. Clone the repository
+### 1. Clone
 
 ```bash
-git clone https://github.com/[student-username]/[repo-name].git
-cd [repo-name]
+git clone https://github.com/[github-username]/vla-mobility.git
+cd vla-mobility
 ```
 
-### 2. Set up the environment
+### 2. Environment
 
 ```bash
-# Using pip
-pip install -r requirements.txt
-
-# Or using conda
 conda env create -f environment.yml
-conda activate [env-name]
+conda activate vla-mobility
 ```
 
-> Tested on Python [X.X], [OS]. Key dependencies: [e.g., PyTorch 2.x, NumPy, Pandas].
+> Tested on Ubuntu with NVIDIA GPUs (CUDA 12.x). OpenDriveVLA-0.5B inference fits on a single 12 GB GPU; AutoVLA fine-tuning is intended for a multi-GPU workstation (e.g., dual RTX 6000 Ada) or an HPC cluster.
 
-### 3. Download the data
+### 3. Data
 
-Data is hosted on Zenodo: **[https://doi.org/10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX)**
-
-```bash
-# Place downloaded files in:
-data/raw/
-```
-
-See [`data/README.md`](data/README.md) for detailed data description and format.
-
-### 4. Run the experiments
-
-```bash
-# Reproduce main results (Table X in the paper)
-python experiments/evaluate.py --config experiments/configs/main.yaml
-
-# Train from scratch
-python experiments/train.py --config experiments/configs/train.yaml
-```
-
----
-
-## Data
-
-| Item | Description | Format | Size | Link |
-|------|-------------|--------|------|------|
-| [Dataset name] | [Brief description] | CSV / JSON / PCD | [X MB] | [Zenodo DOI] |
-
-Full data documentation → [`data/README.md`](data/README.md)
-
----
-
-## Results
-
-<!-- Paste key table or figure from paper here, or describe where to find it -->
-
-| Metric | Value |
+| Source | Where |
 |--------|-------|
-| [e.g., RMSE] | [X.XX] |
-| [e.g., MAE]  | [X.XX] |
+| nuScenes | https://www.nuscenes.org (registration required) |
+| DriveLM-nuScenes | https://github.com/OpenDriveLab/DriveLM |
+| NAVSIM | https://github.com/autonomousvision/navsim |
+
+Place data under `datasets/` and see [`datasets/README.md`](datasets/README.md) for the expected layout and preprocessing notes (including the DriveLM image-path fix).
+
+### 4. Models
+
+```bash
+# OpenDriveVLA-0.5B checkpoint (Hugging Face)
+hf download DriveVLA/OpenDriveVLA-0.5B --local-dir models/opendrivevla-0.5b
+
+# AutoVLA
+git clone https://github.com/ucla-mobility/AutoVLA.git models/autovla
+```
+
+### 5. Run a use case
+
+```bash
+python sourcecode/clusterA_action_representation/usecaseA1_baseline_inference_opendrivevla_nuscenes.py \
+  --config sourcecode/configs/A1.yaml
+```
 
 ---
 
-## Cite This Paper
+## Citation & Upstream Work
 
-If you use this code or dataset, please cite:
+This is a research-in-progress learning series; a citation will be added if it leads to a publication. The work builds directly on:
 
 ```bibtex
-@article{[citekey][year],
-  author    = {[Author1] and [Author2] and Hu, Xianbiao},
-  title     = {[Paper Title]},
-  journal   = {[Journal Name]},
-  year      = {[Year]},
-  volume    = {[Vol]},
-  pages     = {[Pages]},
-  doi       = {[DOI]}
+@inproceedings{jiang2025survey,
+  title     = {A Survey on Vision-Language-Action Models for Autonomous Driving},
+  author    = {Jiang, Sicong and Huang, Zilin and Qian, Kangan and Luo, Ziang and Zhu, Tianze and Zhong, Yang and others},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV) Workshops},
+  year      = {2025},
+  eprint    = {2506.24044}
+}
+
+@misc{zhou2025opendrivevla,
+  title         = {OpenDriveVLA: Towards End-to-end Autonomous Driving with Large Vision Language Action Model},
+  author        = {Zhou, Xingcheng and Han, Xuyuan and Yang, Feng and Ma, Yunpu and Tresp, Volker and Knoll, Alois},
+  year          = {2025},
+  eprint        = {2503.23463},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV}
+}
+
+@article{zhou2025autovla,
+  title   = {AutoVLA: A Vision-Language-Action Model for End-to-End Autonomous Driving with Adaptive Reasoning and Reinforcement Fine-Tuning},
+  author  = {Zhou, Zewei and Cai, Tianhui and Zhao, Seth Z. and Zhang, Yun and Huang, Zhiyu and Zhou, Bolei and Ma, Jiaqi},
+  journal = {arXiv preprint arXiv:2506.13757},
+  year    = {2025}
 }
 ```
 
@@ -139,12 +197,10 @@ If you use this code or dataset, please cite:
 
 - 🏠 **Smart Mobility Lab:** [sites.psu.edu/xbhu](https://sites.psu.edu/xbhu/)
 - 📖 **Research Atlas:** [atlas.mobilitypsu.com](https://atlas.mobilitypsu.com)
-- 📦 **Dataset (Zenodo):** [DOI link]
-- 📊 **Slides:** [Link if available]
+- 📚 **VLA4AD survey & resource list:** [github.com/JohnsonJiang1996/Awesome-VLA4AD](https://github.com/JohnsonJiang1996/Awesome-VLA4AD)
 
 ---
 
 ## License
 
-Code: [MIT License](LICENSE)  
-Data: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — See [`data/README.md`](data/README.md)
+Code: [MIT License](LICENSE)
