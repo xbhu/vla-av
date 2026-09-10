@@ -10,9 +10,7 @@
 
 This repository documents a structured, hands-on study of **Vision-Language-Action (VLA)** models for autonomous driving, following the same "theory first, then runnable use cases on open datasets" rhythm used in the lab's earlier LLM and VLM series.
 
-It is written for two audiences. For a **transportation researcher**, it is a reproducible scaffold for understanding what VLA adds over a VLM (an *action representation* plus a *closed perception-action loop*) and why that loop makes honest evaluation hard. For a **DOT / practitioner** reader, the recurring takeaway is concrete: strong open-loop numbers (e.g., nuScenes L2) can hide an unsafe policy, and this repo shows how to expose that gap.
-
-The distinctive angle — consistent with the lab's prior work — is **adversarial evaluation and capability-boundary characterization** rather than leaderboard performance. The learning series runs on *generic* open driving data; applying VLA to the lab's own embodied scenarios (ATMA leader-follower, cooperative driving automation, work-zone automation) is a downstream research phase that will require lab-collected data and is intentionally out of scope here.
+The learning series runs on *generic* open driving data; applying VLA to the lab's own embodied scenarios (ATMA leader-follower, cooperative driving automation, work-zone automation) is a downstream research phase that will require lab-collected data and is intentionally out of scope here.
 
 ---
 
