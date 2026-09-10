@@ -22,6 +22,11 @@ Concept-level groundwork before any code:
 
 - **Positioning** — VLA as a *branch of the VLM lineage* (LLM → VLM → VLA), not a new foundational paradigm.
 - **Embodied vs. agentic vs. physical AI** — why VLA requires a moving, sensor-bearing agent, and how that differs from virtual LLM agents.
+  - *Physical AI ≈ Embodied AI* in practice; the narrative framing differs but the referent largely overlaps — not a distinction worth over-indexing on.
+  - *Agentic* and *Embodied* are intersecting, not nested, circles. Agentic-but-not-embodied: an LLM coding agent. Embodied-but-weakly-agentic: a reflex-only driving controller. Their intersection — agents that plan, use tools, *and* have a body — is the real frontier VLA targets.
+  - *Two orthogonal axes*: LLM → VLM → VLA is the **model lineage** axis; agentic / embodied / physical is the **deployment paradigm** axis. Both a virtual LLM agent and a VLA-driven AV are called "agents," but in different senses.
+  - VLA is best understood as a *method* for building embodied/physical AI systems, not a subclass of them (subclasses are "robot," "AV," etc.).
+  - The body must move and close a sensorimotor perception-action loop; the world need not be physical — VLA trains and evaluates fine in simulation (NAVSIM, CARLA). Real hardware vs. sim is a deployment question, not a VLA prerequisite.
 - **Evaluation philosophy** — open-loop vs. closed-loop vs. pseudo-closed-loop (NAVSIM), and the "ego status is all you need" critique of open-loop metrics.
 - **Action representation** — two orthogonal axes: *output level* (trajectory vs. low-level control) and *decoding mechanism* (discrete tokenization vs. continuous regression vs. diffusion), unified by the core problem of **future multimodality**.
 
