@@ -31,8 +31,6 @@ Concept-level groundwork before any code:
 - **Evaluation philosophy** — open-loop vs. closed-loop vs. pseudo-closed-loop (NAVSIM), and the "ego status is all you need" critique of open-loop metrics.
 - **Action representation** — two orthogonal axes: *output level* (trajectory vs. low-level control) and *decoding mechanism* (discrete tokenization vs. continuous regression vs. diffusion), unified by the core problem of **future multimodality**.
 
-Theory notes live under [`docs/`](docs/).
-
 ### Phase 1 — Use Cases (three clusters)
 
 The series spine: **VLA = VLM + (action representation) + (closed perception-action loop).** Each cluster maps to one part of that spine.
