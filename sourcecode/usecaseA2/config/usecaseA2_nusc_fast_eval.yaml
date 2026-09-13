@@ -1,0 +1,54 @@
+
+name: qwen2.5-vl-3B-nusc-sft
+description: AutoVLA based on Qwen 2.5 VL 3B model fine-tuned on NuPlan dataset with action only
+
+# model
+model:
+  use_cot: false
+  pretrained_model_path: ./Qwen2.5-VL-3B-Instruct
+  train_vision_backbone: false
+  train_lm_backbone: true
+  codebook_cache_path: "codebook_cache/agent_vocab.pkl"
+  trajectory: # future trajectory parameters
+    num_poses: 10
+    interval_length: 0.5
+    time_horizon: 5.0
+  tokens: # action token parameters, depends on the pretrained large model
+    action_start_id: 151665
+    ignore_index: -100
+    assistant_id: [151644, 77091]
+  video:
+    min_pixels: 109760
+    max_pixels: 109760
+
+# training
+training:
+  batch_size: 1
+  learning_rate: 2.0e-5
+  epochs: 5
+  num_workers: 4
+  weight_decay: 0.01
+  lr_warmup_step: 500
+  lr_step_frequency: 2000
+  lr_step_gamma: 0.98
+  train_sample_size: null  # Number of examples to randomly sample from training set, set to null to use full dataset
+  accumulate_grad_batches: 4
+
+data:
+  train:
+      json_dataset_path: ./dataset/nuscenes/nuscenes_train
+      sensor_data_path: ./dataset/nuscenes
+
+  val:
+      json_dataset_path: /home/xzh5180/Research/vla-av/datasets/autovla_nusc_preprocessed_val
+      sensor_data_path: ./dataset/nuscenes
+
+
+inference:
+  batch_size: 1
+  num_workers: 2
+  sample:
+    max_length: 2048
+    temperature: 0.01
+    top_k: 0
+    top_p: 1.0
