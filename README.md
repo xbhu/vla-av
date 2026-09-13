@@ -90,25 +90,19 @@ Rule of thumb for this series: **OpenDriveVLA gets you in the door (A1); AutoVLA
 
 ```
 .
-├── docs/                              # Phase 0 theory notes, design docs
+├── sourcecode/                        # Use-case scripts, configs, and diagnostic tools
+│   ├── usecaseA1_openloop_baseline_opendrivevla/   # A1: OpenDriveVLA open-loop inference on nuScenes
+│   └── usecaseA2_openloop_baseline_autovla/        # A2: AutoVLA open-loop baseline on nuScenes
 │
-├── sourcecode/                        # Use-case scripts (usecaseNX_*.py)
-│   ├── clusterA_action_representation/
-│   ├── clusterB_evaluation_loop/
-│   └── clusterC_capability_boundaries/
+├── outputs/                           # Experiment outputs (mirrors sourcecode/ layout)
+│   ├── usecaseA1_openloop_baseline_opendrivevla/
+│   └── usecaseA2_openloop_baseline_autovla/
 │
-├── datasets/                          # nuScenes / DriveLM / NAVSIM (download instructions below)
+├── datasets/                          # nuScenes / DriveLM / NAVSIM (see datasets/README.md)
 │   └── README.md
 │
 ├── models/                            # Pointers / checkouts for OpenDriveVLA, AutoVLA
 │
-├── outputs/                           # Experiment outputs (mirrors sourcecode/ layout)
-│
-├── notebooks/                         # Exploratory analysis & result visualization
-│
-├── environment.yml                    # Conda environment
-├── requirements.txt                   # Python dependencies
-├── LICENSE
 └── README.md
 ```
 
