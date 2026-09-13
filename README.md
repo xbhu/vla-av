@@ -106,7 +106,7 @@ Rule of thumb for this series: **OpenDriveVLA gets you in the door (A1); AutoVLA
 └── README.md
 ```
 
-Script naming convention: `usecaseNX_description_model_dataset.py` (e.g., `usecaseA1_baseline_inference_opendrivevla_nuscenes.py`).
+Folder naming convention: `usecaseNX_description_model/` (e.g., `usecaseA1_openloop_baseline_opendrivevla/`). Each folder contains a `README.md`, scripts, configs, and diagnostic tools.
 
 ---
 
