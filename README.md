@@ -91,8 +91,8 @@ Rule of thumb for this series: **OpenDriveVLA gets you in the door (A1); AutoVLA
 ```
 .
 ├── sourcecode/                        # Use-case scripts, configs, and diagnostic tools
-│   ├── usecaseA1_openloop_baseline_opendrivevla/   # A1: OpenDriveVLA open-loop inference on nuScenes
-│   └── usecaseA2_openloop_baseline_autovla/        # A2: AutoVLA open-loop baseline on nuScenes
+│   ├── usecaseA1_openloop_baseline_opendrivevla/   # A1: OpenDriveVLA open-loop inference on nuScenes (README.md)
+│   └── usecaseA2_openloop_baseline_autovla/        # A2: AutoVLA open-loop baseline on nuScenes (README.md)
 │
 ├── outputs/                           # Experiment outputs (mirrors sourcecode/ layout)
 │   ├── usecaseA1_openloop_baseline_opendrivevla/
