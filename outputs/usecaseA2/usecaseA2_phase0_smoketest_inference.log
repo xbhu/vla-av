@@ -1,0 +1,128 @@
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  7.55it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  8.70it/s]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.48, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+/home/xzh5180/Research/vla-av/sourcecode/AutoVLA/tools/eval/nusc_eval_a2.py:77: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state_dict = torch.load(checkpoint_path, map_location='cpu')['state_dict']
+
+Processing samples:   0%|          | 0/5 [00:00<?, ?it/s]/home/xzh5180/Research/vla-av/sourcecode/AutoVLA/tools/eval/nusc_eval_a2.py:139: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  uniad_data = torch.load(seg_path, map_location="cpu")
+
+Processing samples:  20%|██        | 1/5 [00:02<00:11,  2.97s/it]
+Processing samples:  40%|████      | 2/5 [00:05<00:08,  2.83s/it]
+Processing samples:  60%|██████    | 3/5 [00:08<00:05,  2.77s/it]
+Processing samples:  80%|████████  | 4/5 [00:11<00:02,  2.75s/it]
+Processing samples: 100%|██████████| 5/5 [00:13<00:00,  2.74s/it]
+Processing samples: 100%|██████████| 5/5 [00:13<00:00,  2.77s/it]
+
+[A2 DEBUG] internal tokenizer size=153713 outer tokenizer size=153713
+[A2 DEBUG] load_state_dict: missing=0 unexpected=0
+Evaluating 5 samples...
+Output: <think>
+This is a straightforward scenario, and a direct decision can be made.
+</think>
+<answer>
+The final output action is: <action_157><action_815><action_565><action_44><action_206><action_25><action_1163><action_744><action_11><action_266>
+</answer>
+Predicted trajectory: tensor([[ 5.7334e+00, -2.7877e-02, -5.6393e-03],
+        [ 1.1490e+01, -1.4273e-01, -2.5050e-02],
+        [ 1.7309e+01, -3.2269e-01, -3.1105e-02],
+        [ 2.3185e+01, -5.3516e-01, -3.9523e-02],
+        [ 2.9148e+01, -8.3565e-01, -5.4239e-02],
+        [ 3.5208e+01, -1.1767e+00, -5.6811e-02],
+        [ 4.1333e+01, -1.6005e+00, -7.5643e-02],
+        [ 4.7454e+01, -2.0149e+00, -6.6422e-02],
+        [ 5.3757e+01, -2.4399e+00, -6.7677e-02],
+        [ 6.0132e+01, -2.8922e+00, -7.1237e-02]])
+Time taken: 2.963 seconds
+Output: <think>
+This is a straightforward scenario, and a direct decision can be made.
+</think>
+<answer>
+The final output action is: <action_753><action_546><action_907><action_1340><action_546><action_965><action_1516><action_1715><action_1792><action_1998>
+</answer>
+Predicted trajectory: tensor([[ 2.2515e+00, -4.4619e-02, -1.7668e-02],
+        [ 4.5801e+00, -1.9252e-01, -6.6775e-02],
+        [ 6.7786e+00, -4.6050e-01, -1.2251e-01],
+        [ 9.0917e+00, -7.9299e-01, -1.5444e-01],
+        [ 1.1378e+01, -1.2570e+00, -2.0355e-01],
+        [ 1.3817e+01, -1.9273e+00, -2.7824e-01],
+        [ 1.6200e+01, -2.8771e+00, -3.8992e-01],
+        [ 1.8623e+01, -4.1034e+00, -4.7428e-01],
+        [ 2.1184e+01, -5.6649e+00, -5.7336e-01],
+        [ 2.3617e+01, -7.3998e+00, -6.3522e-01]])
+Time taken: 2.704 seconds
+Output: <think>
+This is a straightforward scenario, and a direct decision can be made.
+</think>
+<answer>
+The final output action is: <action_0><action_0><action_28><action_1><action_167><action_84><action_71><action_130><action_689><action_66>
+</answer>
+Predicted trajectory: tensor([[ 3.3143e-03, -1.8780e-04, -1.9545e-05],
+        [ 6.6285e-03, -3.7563e-04, -3.9091e-05],
+        [ 8.2586e-02, -3.6788e-04, -9.2971e-05],
+        [ 4.8523e-01, -7.4674e-04,  2.6158e-04],
+        [ 1.3344e+00,  1.8825e-03,  2.7802e-03],
+        [ 2.5935e+00, -3.7824e-03, -3.3939e-03],
+        [ 4.2098e+00, -8.4224e-03, -2.9728e-03],
+        [ 6.2045e+00, -1.7999e-02, -3.4127e-03],
+        [ 8.5775e+00,  7.5638e-03,  6.6848e-03],
+        [ 1.1096e+01,  2.5147e-02,  6.6004e-03]])
+Time taken: 2.694 seconds
+Output: <think>
+This is a straightforward scenario, and a direct decision can be made.
+</think>
+<answer>
+The final output action is: <action_1340><action_546><action_1053><action_318><action_456><action_456><action_891><action_18><action_66><action_1454>
+</answer>
+Predicted trajectory: tensor([[ 2.3363, -0.0473, -0.0319],
+        [ 4.6626, -0.2284, -0.0810],
+        [ 7.0638, -0.4078, -0.0953],
+        [ 9.5505, -0.7020, -0.1195],
+        [12.0965, -1.0376, -0.1342],
+        [14.6373, -1.4106, -0.1489],
+        [17.2334, -1.8494, -0.1696],
+        [19.7867, -2.2811, -0.1681],
+        [22.2694, -2.7018, -0.1682],
+        [24.7289, -3.0708, -0.1470]])
+Time taken: 2.696 seconds
+Output: <think>
+This is a straightforward scenario, and a direct decision can be made.
+</think>
+<answer>
+The final output action is: <action_1151><action_1151><action_1163><action_744><action_1163><action_1267><action_25><action_206><action_1962><action_157>
+</answer>
+Predicted trajectory: tensor([[ 6.1887e+00, -2.1625e-02, -2.3525e-03],
+        [ 1.2377e+01, -5.7809e-02, -4.7049e-03],
+        [ 1.8516e+01, -1.6200e-01, -2.3536e-02],
+        [ 2.4650e+01, -2.5710e-01, -1.4316e-02],
+        [ 3.0787e+01, -4.2029e-01, -3.3148e-02],
+        [ 3.6789e+01, -5.7532e-01, -2.4043e-02],
+        [ 4.2857e+01, -7.3327e-01, -2.6615e-02],
+        [ 4.8823e+01, -9.5678e-01, -4.1331e-02],
+        [ 5.4637e+01, -1.1591e+00, -3.0869e-02],
+        [ 6.0367e+01, -1.3639e+00, -3.6508e-02]])
+Time taken: 2.704 seconds
++-------------------------------------------------------------------+
+|      STP3's Definition Planning Metrics (Cumulative Average)      |
++-------------+--------+--------+--------+--------+--------+--------+
+|   metrics   |  0.5s  |  1.0s  |  1.5s  |  2.0s  |  2.5s  |  3.0s  |
++-------------+--------+--------+--------+--------+--------+--------+
+|   obj_col   | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 |
+| obj_box_col | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 |
+|      L2     | 0.1522 | 0.2190 | 0.2966 | 0.4160 | 0.5840 | 0.8030 |
++-------------+--------+--------+--------+--------+--------+--------+
++-------------------------------------------------------------------+
+|         UniAD's Definition Planning Metrics (Per-Timestep)        |
++-------------+--------+--------+--------+--------+--------+--------+
+|   metrics   |  0.5s  |  1.0s  |  1.5s  |  2.0s  |  2.5s  |  3.0s  |
++-------------+--------+--------+--------+--------+--------+--------+
+|   obj_col   | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 |
+| obj_box_col | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 |
+|      L2     | 0.1522 | 0.2858 | 0.4518 | 0.7744 | 1.2560 | 1.8976 |
++-------------+--------+--------+--------+--------+--------+--------+
+
+Results saved to /home/xzh5180/Research/vla-av/outputs/usecaseA2/usecaseA2_phase0_smoketest_planning_table.txt
+
