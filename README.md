@@ -1,6 +1,6 @@
 # VLA for Autonomous Driving — A Systematic Learning & Research Series
 
-> **🗂️ Status:** Active — learning series in progress &nbsp;|&nbsp; Phase 0 (theory) → Phase 1 (use cases)
+> **🗂️ Status:** Active — A1 ✓ A2 ✓ &nbsp;|&nbsp; Phase 0 (theory) complete → Phase 1 (use cases) in progress
 > **👤 Maintainer:** Xianbiao (XB) Hu · Smart Mobility Lab, The Pennsylvania State University
 > **🧭 Focus:** Not chasing SOTA — characterizing *where and why* VLA driving policies fail, with an eye toward embodied transportation applications (ATMA, CDA, work-zone automation).
 
@@ -39,8 +39,8 @@ The series spine: **VLA = VLM + (action representation) + (closed perception-act
 
 | UC | Goal | Model / Data |
 |----|------|--------------|
-| **A1** | Run baseline inference; understand the I/O contract; compute open-loop L2 / collision | OpenDriveVLA-0.5B / nuScenes |
-| **A2** | Build an action codebook by hand; compare token vs. regression vs. diffusion decoding on the **same** trajectory GT; quantify multimodal coverage (does regression mode-collapse?) | AutoVLA codebook tooling + custom heads / nuScenes |
+| **A1** ✓ | Run baseline inference; understand the I/O contract; compute open-loop L2 / collision | OpenDriveVLA-0.5B / nuScenes |
+| **A2** ✓ | Build an action codebook by hand; compare token vs. regression vs. diffusion decoding on the **same** trajectory GT; quantify multimodal coverage (does regression mode-collapse?) | AutoVLA codebook tooling + custom heads / nuScenes |
 | **A3** | LoRA fine-tune the action representation; test whether it learns planning or **memorizes** templated planning QA | AutoVLA / DriveLM |
 
 **Cluster B — Closed loop & the evaluation illusion** *(what VLA adds, part 2 — the methodological spine)*
