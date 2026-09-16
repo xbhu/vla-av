@@ -150,10 +150,10 @@ git clone https://github.com/ucla-mobility/AutoVLA.git models/autovla
 
 ### 5. Run a use case
 
-```bash
-python sourcecode/clusterA_action_representation/usecaseA1_baseline_inference_opendrivevla_nuscenes.py \
-  --config sourcecode/configs/A1.yaml
-```
+Each use case has its own scripts and config. See the use case README for the exact command:
+
+- [Use Case A1 — OpenDriveVLA baseline inference](sourcecode/usecaseA1_openloop_baseline_opendrivevla/README.md)
+- [Use Case A2 — AutoVLA action codebook](sourcecode/usecaseA2_openloop_baseline_autovla/README.md)
 
 ---
 
