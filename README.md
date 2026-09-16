@@ -121,12 +121,12 @@ cd vla-av
 
 ### 2. Environment
 
-```bash
-conda env create -f environment.yml
-conda activate vla-mobility
-```
+Each use case requires its own conda environment — there is no single shared env. See the per-usecase README for exact setup steps:
 
-> Tested on Ubuntu with NVIDIA GPUs (CUDA 12.x). OpenDriveVLA-0.5B inference fits on a single 12 GB GPU; AutoVLA fine-tuning is intended for a multi-GPU workstation (e.g., dual RTX 6000 Ada) or an HPC cluster.
+- **A1 (OpenDriveVLA):** Python 3.10, PyTorch 2.1.2+cu121, mmcv 1.7.2 / mmdet3d 1.0.0rc6 — see [A1 README](sourcecode/usecaseA1_openloop_baseline_opendrivevla/README.md)
+- **A2 (AutoVLA):** Python 3.9, PyTorch 2.4.0 — see [A2 README](sourcecode/usecaseA2_openloop_baseline_autovla/README.md)
+
+> Tested on Ubuntu with NVIDIA GPUs (CUDA 12.x). Single 12 GB GPU is sufficient for inference; AutoVLA fine-tuning is intended for a multi-GPU workstation (e.g., dual RTX 6000 Ada) or an HPC cluster.
 
 ### 3. Data
 
