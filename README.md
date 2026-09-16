@@ -115,8 +115,8 @@ Folder naming convention: `usecaseNX_description_model/` (e.g., `usecaseA1_openl
 ### 1. Clone
 
 ```bash
-git clone https://github.com/[github-username]/vla-mobility.git
-cd vla-mobility
+git clone https://github.com/xbhu/vla-av.git
+cd vla-av
 ```
 
 ### 2. Environment
