@@ -1,0 +1,5 @@
+Total source files: 150
+Kept (future_mask_sum_3s == 6): 126
+Skipped (degenerate, future_mask_sum_3s < 6): 24
+Skipped (no future_mask field present): 0
+Filtered val set written to: /home/xzh5180/Research/vla-av/datasets/autovla_nusc_preprocessed_val_filtered
