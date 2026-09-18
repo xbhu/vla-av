@@ -1,0 +1,2 @@
+Wrote /home/xzh5180/Research/vla-av/sourcecode/AutoVLA/tools/run_sft_a3.py
+Diff summary: added peft import, added checkpoint-load+LoRA block after model init (gradient checkpointing line preserved), replaced FSDPStrategy with single-GPU bf16-true strategy.
