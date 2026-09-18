@@ -1,0 +1,67 @@
+
+name: usecaseA3_smoketest_lora_ft_nuscenes_mini
+description: AutoVLA UC A3 - LoRA fine-tuning on nuScenes-mini train split (218 samples) to test memorization vs. learning, continuing from AutoVLA_PDMS_89.ckpt
+
+# model
+model:
+  use_cot: false
+  pretrained_model_path: ./Qwen2.5-VL-3B-Instruct
+  sft_model_path: ./checkpoints/AutoVLA_PDMS_89.ckpt
+  train_vision_backbone: false
+  train_lm_backbone: true
+  codebook_cache_path: "codebook_cache/agent_vocab.pkl"
+  lora:
+    use: true
+    task_type: CAUSAL_LM
+    target_modules: ["q_proj", "v_proj", "k_proj", "o_proj"]
+    r: 8
+    alpha: 8
+    dropout: 0.1
+    bias: "none"
+  trajectory:
+    num_poses: 10
+    interval_length: 0.5
+    time_horizon: 5.0
+  tokens:
+    action_start_id: 151665
+    ignore_index: -100
+    assistant_id: [151644, 77091]
+  video:
+    min_pixels: 109760
+    max_pixels: 109760
+
+# training
+training:
+  batch_size: 1
+  learning_rate: 2.0e-5
+  epochs: 1
+  num_workers: 4
+  weight_decay: 0.01
+  lr_warmup_step: 20
+  lr_step_frequency: 100
+  lr_step_gamma: 0.98
+  train_sample_size: 5
+  accumulate_grad_batches: 4
+
+data:
+  train:
+      # PLACEHOLDER PATH - must confirm before running, see verification command below
+      json_dataset_path:
+        - /home/xzh5180/Research/vla-av/datasets/autovla_nusc_preprocessed_train
+      sensor_data_path:
+        - null
+
+  val:
+      json_dataset_path:
+        - /home/xzh5180/Research/vla-av/datasets/autovla_nusc_preprocessed_val
+      sensor_data_path:
+        - null
+
+inference:
+  batch_size: 1
+  num_workers: 2
+  sample:
+    max_length: 2048
+    temperature: 0.01
+    top_k: 0
+    top_p: 1.0
