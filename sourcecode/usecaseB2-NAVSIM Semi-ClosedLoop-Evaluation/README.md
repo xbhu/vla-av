@@ -90,6 +90,9 @@ diverges from, or is independent of closed-loop safety performance.
 
 138 / 138 scenarios evaluated successfully, 0 failures.
 
+PDM-Score ranges from 0 to 1, **higher is better** (1.0 = perfect closed-loop
+driving under the simulator's safety/compliance/comfort criteria).
+
 | Agent | PDM-Score |
 |---|---|
 | Human upper bound | 0.862 |
@@ -98,13 +101,26 @@ diverges from, or is independent of closed-loop safety performance.
 
 ## Interpretation
 
-The original hypothesis was that AutoVLA would show a "good open-loop /
-poor closed-loop" divergence. The actual result does not show a divergence:
-AutoVLA's closed-loop PDMS (0.639) is **below the non-learned CV baseline**
-(0.699), which is directionally consistent with its worst-in-B1 open-loop L2
-(1.420 m). Both metrics point the same way — this checkpoint underperforms
-on this particular mini-subset, rather than "looking good open-loop but
-failing closed-loop."
+**Headline finding**: AutoVLA (0.639) scores below both the human upper
+bound (0.862) and — more tellingly — below the non-learned, rule-based CV
+baseline (0.699). This is the central piece of evidence B2 set out to
+produce: the checkpoint is named `AutoVLA_PDMS_89`, implying a PDM-Score of
+roughly 0.89 was reached at some point during GRPO-CoT training/model
+selection on a larger evaluation set. On this 138-scenario pseudo-closed-loop
+mini-evaluation, however, the same checkpoint cannot even outperform a
+baseline that does no learning at all.
+
+The original hypothesis going into B2 was a "good open-loop / poor
+closed-loop" divergence. The actual result does not show that specific
+divergence: AutoVLA's closed-loop PDMS (0.639, below the CV baseline) is
+directionally consistent with its worst-in-B1 open-loop L2 (1.420 m). Both
+metrics point the same way — this checkpoint underperforms on this
+particular mini-subset, rather than "looking good open-loop but failing
+closed-loop." The more actionable finding is the gap between the
+checkpoint's namesake score (~0.89) and what it actually achieves here
+(0.639) — a reminder that a headline benchmark number attached to a
+checkpoint name is not a guarantee of performance outside the exact split
+and conditions it was measured under.
 
 **Caveat**: the checkpoint's name references a PDMS of ~0.89 presumably
 measured on the full official NAVSIM `navtest` split. The 0.639 here is
