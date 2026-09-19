@@ -1,0 +1,4 @@
+defaults:
+  - scene_filter: b2_mini_subset
+
+data_split: mini
