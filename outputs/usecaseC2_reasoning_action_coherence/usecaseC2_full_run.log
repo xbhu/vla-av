@@ -1,0 +1,148 @@
+nohup: ignoring input
+Loading agent...
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  1.53it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  2.01it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.92it/s]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.48, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+/home/xzh5180/miniconda3/envs/navsim_eval/lib/python3.9/site-packages/transformers/generation/configuration_utils.py:629: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `1e-06` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+Loaded 138 scenes from /home/xzh5180/Research/vla-av/datasets/navsim_mini_subset/autovla_json_input
+[1/138] 0110efb6cf705692 done in 17.5s | stated=(None, None) | traj=(move forward, quick acceleration) | no_decision=True
+[2/138] 02e78191bf845092 done in 17.5s | stated=(None, stop) | traj=(change lane to left, acceleration) | no_decision=False
+[3/138] 03cf8e8ed0915fe1 done in 15.9s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[4/138] 058e86bcd61a50f9 done in 17.9s | stated=(turn left, acceleration) | traj=(turn left, acceleration) | no_decision=False
+[5/138] 08f8db733c8a5384 done in 17.6s | stated=(move forward, maintain constant speed) | traj=(change lane to right, maintain constant speed) | no_decision=False
+[6/138] 0979d00e06e75df7 done in 18.7s | stated=(turn left, deceleration) | traj=(turn left, maintain constant speed) | no_decision=False
+[7/138] 0a582aacb7e8549e done in 17.6s | stated=(move forward, stop) | traj=(move forward, acceleration) | no_decision=False
+[8/138] 0b5abd8495525a60 done in 12.2s | stated=(None, None) | traj=(move forward, quick acceleration) | no_decision=True
+[9/138] 0c0203540b165628 done in 17.2s | stated=(turn right, deceleration) | traj=(turn left, maintain constant speed) | no_decision=False
+[10/138] 0cc018e52b5553c8 done in 19.1s | stated=(move forward, maintain constant speed) | traj=(move forward, maintain constant speed) | no_decision=False
+[11/138] 0f7b2eac06fb583b done in 23.0s | stated=(turn right, deceleration) | traj=(change lane to right, maintain constant speed) | no_decision=False
+[12/138] 100e1f418c6156a2 done in 16.4s | stated=(turn left, deceleration) | traj=(turn left, maintain constant speed) | no_decision=False
+[13/138] 10f1519622fb557e done in 28.1s | stated=(None, None) | traj=(move forward, maintain constant speed) | no_decision=True
+[14/138] 1128ab6e43675ebb done in 17.6s | stated=(move forward, maintain constant speed) | traj=(move forward, quick acceleration) | no_decision=False
+[15/138] 159d4fb387015d29 done in 20.6s | stated=(None, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[16/138] 16f658e44f615c4d done in 17.6s | stated=(move forward, maintain constant speed) | traj=(change lane to right, acceleration) | no_decision=False
+[17/138] 17f8c53191765031 done in 18.2s | stated=(move forward, stop) | traj=(move forward, quick acceleration) | no_decision=False
+[18/138] 182af302b08b5c94 done in 19.3s | stated=(move forward, maintain constant speed) | traj=(move forward, quick acceleration) | no_decision=False
+[19/138] 1906410e9fea5257 done in 18.9s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[20/138] 1a76367220495a43 done in 28.2s | stated=(None, None) | traj=(move forward, maintain constant speed) | no_decision=True
+[21/138] 1c922a7f96245491 done in 17.8s | stated=(turn right, deceleration) | traj=(change lane to left, deceleration) | no_decision=False
+[22/138] 1fdb499ee06d5afe done in 20.8s | stated=(None, None) | traj=(move forward, quick acceleration) | no_decision=True
+[23/138] 201be20f235e537c done in 23.3s | stated=(move forward, deceleration) | traj=(move forward, quick deceleration) | no_decision=False
+[24/138] 203d0a6cad805900 done in 20.9s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[25/138] 239a36414ce551de done in 18.2s | stated=(move forward, maintain constant speed) | traj=(change lane to left, maintain constant speed) | no_decision=False
+[26/138] 27068d25a6ec5544 done in 24.8s | stated=(move forward, maintain constant speed) | traj=(move forward, quick acceleration) | no_decision=False
+[27/138] 28bd4bc16c6c59ba done in 19.9s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[28/138] 28d4e8d52f6959fa done in 23.4s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[29/138] 28d60c4ce7af52cb done in 18.9s | stated=(turn right, deceleration) | traj=(turn right, maintain constant speed) | no_decision=False
+[30/138] 2a2dc7fa004952bb done in 18.3s | stated=(move forward, maintain constant speed) | traj=(move forward, deceleration to zero) | no_decision=False
+[31/138] 2a56e59564ab5860 done in 28.1s | stated=(None, None) | traj=(move forward, quick acceleration) | no_decision=True
+[32/138] 2aad3418f5ef515b done in 14.7s | stated=(turn right, maintain constant speed) | traj=(turn right, maintain constant speed) | no_decision=False
+[33/138] 3010009fcb295507 done in 19.8s | stated=(move forward, deceleration) | traj=(move forward, deceleration to zero) | no_decision=False
+[34/138] 31f1c6fc84cd5d9c done in 19.1s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[35/138] 3284cd057b4e5c4c done in 20.2s | stated=(move forward, maintain constant speed) | traj=(move forward, quick acceleration) | no_decision=False
+[36/138] 34369dd45b885ef6 done in 26.1s | stated=(move forward, acceleration) | traj=(move forward, acceleration) | no_decision=False
+[37/138] 34df25d21e8b5715 done in 19.3s | stated=(move forward, maintain constant speed) | traj=(change lane to right, maintain constant speed) | no_decision=False
+[38/138] 3a153391e4a358d9 done in 18.8s | stated=(turn right, deceleration) | traj=(move forward, acceleration) | no_decision=False
+[39/138] 3a61d7ced3ca590d done in 17.5s | stated=(move forward, stop) | traj=(move forward, quick acceleration) | no_decision=False
+[40/138] 3abe90ea4f655478 done in 28.2s | stated=(None, None) | traj=(turn left, stop) | no_decision=True
+[41/138] 3b33d44fb39a530b done in 16.5s | stated=(move forward, deceleration to zero) | traj=(change lane to right, maintain constant speed) | no_decision=False
+[42/138] 3d2120dc97445f8a done in 18.3s | stated=(move forward, deceleration) | traj=(move forward, deceleration) | no_decision=False
+[43/138] 463b77413b1f5db6 done in 23.1s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[44/138] 47688f8dcf9d547f done in 20.9s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[45/138] 47e024696bf85a8b done in 17.9s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[46/138] 47e15d0bf9795210 done in 21.8s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[47/138] 4a6d03cb04695889 done in 14.4s | stated=(turn left, deceleration) | traj=(move forward, deceleration) | no_decision=False
+[48/138] 4e97cb2d92db5830 done in 18.4s | stated=(move forward, maintain constant speed) | traj=(move forward, deceleration) | no_decision=False
+[49/138] 4fd0254ab4115427 done in 18.6s | stated=(move forward, maintain constant speed) | traj=(turn left, maintain constant speed) | no_decision=False
+[50/138] 506df6f5f2c35944 done in 18.4s | stated=(move forward, maintain constant speed) | traj=(move forward, quick acceleration) | no_decision=False
+[51/138] 52aa8f890b735f6b done in 20.1s | stated=(None, deceleration to zero) | traj=(move forward, deceleration to zero) | no_decision=False
+[52/138] 52d2f017fb1558b1 done in 17.9s | stated=(move forward, deceleration) | traj=(move forward, deceleration) | no_decision=False
+[53/138] 54e89a77ee135c04 done in 26.9s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[54/138] 56df00e642b45ea5 done in 21.7s | stated=(turn left, deceleration to zero) | traj=(turn left, acceleration) | no_decision=False
+[55/138] 588d51c738d551d0 done in 16.7s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[56/138] 5e5bee6716b357f0 done in 17.0s | stated=(move forward, maintain constant speed) | traj=(move forward, maintain constant speed) | no_decision=False
+[57/138] 61c8cb492eaf56da done in 22.7s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[58/138] 62eb6216a6425da9 done in 18.8s | stated=(turn left, stop) | traj=(turn left, maintain constant speed) | no_decision=False
+[59/138] 637e0946539456ce done in 19.2s | stated=(turn right, stop) | traj=(change lane to right, maintain constant speed) | no_decision=False
+[60/138] 699be6da6ef255c6 done in 21.2s | stated=(None, None) | traj=(move forward, quick acceleration) | no_decision=True
+[61/138] 6bf4ad74da62568e done in 28.1s | stated=(None, None) | traj=(move forward, quick acceleration) | no_decision=True
+[62/138] 6c8d443a20da50db done in 16.7s | stated=(None, stop) | traj=(move forward, acceleration) | no_decision=False
+[63/138] 6df1e30977785789 done in 24.5s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[64/138] 6fe976540ad75957 done in 19.0s | stated=(move forward, deceleration to zero) | traj=(turn left, stop) | no_decision=False
+[65/138] 71a3391d74045a10 done in 19.5s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[66/138] 734d1c50b9ec5327 done in 21.7s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[67/138] 784c025d66de5ceb done in 21.8s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[68/138] 78bfd347670158a2 done in 19.0s | stated=(turn left, deceleration) | traj=(turn left, acceleration) | no_decision=False
+[69/138] 7be91f052cec5ed4 done in 19.7s | stated=(None, stop) | traj=(move forward, quick acceleration) | no_decision=False
+[70/138] 7c70365a01645f16 done in 18.2s | stated=(turn left, acceleration) | traj=(change lane to left, acceleration) | no_decision=False
+[71/138] 7cce486251cc5774 done in 18.5s | stated=(None, stop) | traj=(change lane to left, maintain constant speed) | no_decision=False
+[72/138] 803569f800575929 done in 19.0s | stated=(move forward, deceleration) | traj=(move forward, deceleration) | no_decision=False
+[73/138] 80cbb31664715d6c done in 19.9s | stated=(move forward, stop) | traj=(move forward, quick acceleration) | no_decision=False
+[74/138] 8111edd783655ec5 done in 14.7s | stated=(move forward, deceleration) | traj=(move forward, deceleration) | no_decision=False
+[75/138] 82615fcbb4d75b53 done in 22.5s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[76/138] 83f2abebb7775f3e done in 21.0s | stated=(move forward, acceleration) | traj=(move forward, quick acceleration) | no_decision=False
+[77/138] 860bb408ee8a559b done in 18.7s | stated=(turn right, deceleration) | traj=(turn right, deceleration) | no_decision=False
+[78/138] 88d08f76270d5e37 done in 20.2s | stated=(move forward, deceleration) | traj=(move forward, quick deceleration) | no_decision=False
+[79/138] 88e02056dde15d41 done in 19.3s | stated=(move forward, maintain constant speed) | traj=(move forward, acceleration) | no_decision=False
+[80/138] 8f58e126b1d35abe done in 28.2s | stated=(None, None) | traj=(move forward, quick acceleration) | no_decision=True
+[81/138] 916e6f64dd5c5cf5 done in 28.2s | stated=(None, None) | traj=(move forward, deceleration) | no_decision=True
+[82/138] 91ce5224c5315c73 done in 20.7s | stated=(move forward, maintain constant speed) | traj=(move forward, quick deceleration) | no_decision=False
+[83/138] 92b7fb405f2f5ccf done in 19.6s | stated=(move forward, deceleration) | traj=(turn left, acceleration) | no_decision=False
+[84/138] 9352f44f6db657df done in 18.1s | stated=(move forward, maintain constant speed) | traj=(turn left, acceleration) | no_decision=False
+[85/138] 9438eab530575244 done in 18.7s | stated=(None, stop) | traj=(turn left, acceleration) | no_decision=False
+[86/138] 99551be60459573c done in 20.6s | stated=(turn left, deceleration) | traj=(turn left, acceleration) | no_decision=False
+[87/138] 9a5420ab54295c1f done in 16.9s | stated=(None, None) | traj=(move forward, quick acceleration) | no_decision=True
+[88/138] 9b3dea7c20c75987 done in 17.4s | stated=(turn left, deceleration) | traj=(move forward, deceleration to zero) | no_decision=False
+[89/138] 9b655d2471cb531b done in 19.4s | stated=(None, stop) | traj=(move forward, quick acceleration) | no_decision=False
+[90/138] 9bc4c16fd9db56ff done in 18.8s | stated=(move forward, deceleration to zero) | traj=(change lane to left, maintain constant speed) | no_decision=False
+[91/138] 9f37b5755d545c9b done in 28.1s | stated=(None, None) | traj=(turn right, maintain constant speed) | no_decision=False
+[92/138] 9f576445d12a5b52 done in 21.2s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[93/138] a0ff0dff8e5d512f done in 19.5s | stated=(turn left, maintain constant speed) | traj=(turn left, acceleration) | no_decision=False
+[94/138] a4e743d34ef058c5 done in 21.9s | stated=(move forward, maintain constant speed) | traj=(change lane to left, maintain constant speed) | no_decision=False
+[95/138] a5c9bcab52165145 done in 24.7s | stated=(move forward, maintain constant speed) | traj=(change lane to left, maintain constant speed) | no_decision=False
+[96/138] a68ae46331e55394 done in 21.9s | stated=(move forward, maintain constant speed) | traj=(change lane to right, maintain constant speed) | no_decision=False
+[97/138] aa1a71ec906c5f59 done in 17.2s | stated=(move forward, maintain constant speed) | traj=(move forward, deceleration) | no_decision=False
+[98/138] aa96f52b95b155e7 done in 20.7s | stated=(turn left, stop) | traj=(move forward, deceleration to zero) | no_decision=False
+[99/138] ab0473e852235c3a done in 19.6s | stated=(turn left, quick acceleration) | traj=(change lane to left, acceleration) | no_decision=False
+[100/138] ab24fa43b3d95568 done in 23.9s | stated=(None, None) | traj=(move forward, quick acceleration) | no_decision=True
+[101/138] ad69184f0e215af6 done in 18.3s | stated=(turn right, deceleration) | traj=(move forward, maintain constant speed) | no_decision=False
+[102/138] aea085dd82275daf done in 17.7s | stated=(move forward, stop) | traj=(move forward, quick acceleration) | no_decision=False
+[103/138] b101cf0ddd475e3d done in 16.9s | stated=(turn right, maintain constant speed) | traj=(move forward, acceleration) | no_decision=False
+[104/138] b1e97fd2ea285d1c done in 17.5s | stated=(turn left, acceleration) | traj=(change lane to left, quick acceleration) | no_decision=False
+[105/138] b367643a70e250b9 done in 20.4s | stated=(move forward, maintain constant speed) | traj=(move forward, deceleration) | no_decision=False
+[106/138] bdcc70c45a095f1c done in 15.5s | stated=(move forward, deceleration) | traj=(move forward, maintain constant speed) | no_decision=False
+[107/138] c0ee4f794af35185 done in 18.0s | stated=(turn left, stop) | traj=(turn left, acceleration) | no_decision=False
+[108/138] c59249f6dc3d5956 done in 19.3s | stated=(move forward, deceleration to zero) | traj=(move forward, acceleration) | no_decision=False
+[109/138] c89573b25c8d57ac done in 23.9s | stated=(move forward, deceleration to zero) | traj=(move forward, acceleration) | no_decision=False
+[110/138] ca9e7281adce5212 done in 16.6s | stated=(turn left, acceleration) | traj=(turn left, acceleration) | no_decision=False
+[111/138] cc74fd0beab35567 done in 28.2s | stated=(None, None) | traj=(move forward, quick acceleration) | no_decision=True
+[112/138] d19a23f6a5385fa0 done in 18.5s | stated=(turn left, deceleration to zero) | traj=(turn left, acceleration) | no_decision=False
+[113/138] d33b915d4e1b5c29 done in 18.1s | stated=(turn left, deceleration to zero) | traj=(change lane to left, acceleration) | no_decision=False
+[114/138] d38905854e5f55a3 done in 19.3s | stated=(move forward, deceleration) | traj=(change lane to right, maintain constant speed) | no_decision=False
+[115/138] d3d4ab678d335a44 done in 22.5s | stated=(move forward, deceleration) | traj=(move forward, quick acceleration) | no_decision=False
+[116/138] d890673e042a5399 done in 18.8s | stated=(move forward, deceleration to zero) | traj=(move forward, quick acceleration) | no_decision=False
+[117/138] d8f6ccef2f895d6c done in 19.2s | stated=(turn right, deceleration) | traj=(move forward, stop) | no_decision=False
+[118/138] d9816222a1f5591e done in 16.8s | stated=(move forward, maintain constant speed) | traj=(change lane to right, deceleration) | no_decision=False
+[119/138] d998f63bce8a512e done in 20.9s | stated=(move forward, maintain constant speed) | traj=(move forward, quick acceleration) | no_decision=False
+[120/138] da4ae3a1eb125028 done in 22.5s | stated=(turn left, stop) | traj=(change lane to left, maintain constant speed) | no_decision=False
+[121/138] dbb7594c1f47598d done in 18.3s | stated=(None, stop) | traj=(move forward, quick acceleration) | no_decision=False
+[122/138] ddcc59d0bbae5c17 done in 16.0s | stated=(move forward, maintain constant speed) | traj=(move forward, maintain constant speed) | no_decision=False
+[123/138] ddfbc4edaaae53b5 done in 19.8s | stated=(move forward, maintain constant speed) | traj=(change lane to left, acceleration) | no_decision=False
+[124/138] de7019f0af025036 done in 21.7s | stated=(move forward, stop) | traj=(move forward, maintain constant speed) | no_decision=False
+[125/138] df51e1fc27e254b6 done in 20.5s | stated=(move forward, stop) | traj=(move forward, deceleration) | no_decision=False
+[126/138] e36a86d0bbdb56d1 done in 18.5s | stated=(turn right, deceleration) | traj=(move forward, deceleration to zero) | no_decision=False
+[127/138] e5f8dfb583be51bf done in 18.9s | stated=(turn right, deceleration) | traj=(change lane to right, acceleration) | no_decision=False
+[128/138] ea422842e0e655b3 done in 20.9s | stated=(move forward, acceleration) | traj=(move forward, quick acceleration) | no_decision=False
+[129/138] ed7a5232dc7c5008 done in 18.9s | stated=(move forward, maintain constant speed) | traj=(change lane to left, maintain constant speed) | no_decision=False
+[130/138] edd3855723a15baa done in 18.6s | stated=(move forward, maintain constant speed) | traj=(change lane to left, acceleration) | no_decision=False
+[131/138] efd0c9d43d9f5027 done in 17.3s | stated=(move forward, maintain constant speed) | traj=(move forward, maintain constant speed) | no_decision=False
+[132/138] eff101b2b3ea514d done in 21.2s | stated=(move forward, maintain constant speed) | traj=(move forward, acceleration) | no_decision=False
+[133/138] f0ac2804298b564f done in 17.8s | stated=(turn right, acceleration) | traj=(change lane to right, quick acceleration) | no_decision=False
+[134/138] f328205fbdc05912 done in 16.7s | stated=(turn right, deceleration) | traj=(move forward, maintain constant speed) | no_decision=False
+[135/138] f796c5d79b9d5775 done in 20.8s | stated=(turn left, maintain constant speed) | traj=(move forward, maintain constant speed) | no_decision=False
+[136/138] f8055a08fd195ca3 done in 28.2s | stated=(None, None) | traj=(change lane to left, maintain constant speed) | no_decision=False
+[137/138] f839f8d2874c5268 done in 4.4s | stated=(None, None) | traj=(turn left, maintain constant speed) | no_decision=True
+[138/138] fe4adf695f83508a done in 17.7s | stated=(move forward, stop) | traj=(move forward, quick acceleration) | no_decision=False
+
+Done. Results saved to ./outputs/usecaseC2/c2_consistency_results.csv
