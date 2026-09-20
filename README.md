@@ -1,6 +1,6 @@
 # VLA for Autonomous Driving — A Systematic Learning & Research Series
 
-> **🗂️ Status:** Active — A1 ✓ A2 ✓ &nbsp;|&nbsp; Phase 0 (theory) complete → Phase 1 (use cases) in progress
+> **🗂️ Status:** Complete — A1 ✓ A2 ✓ A3 ✓ B1 ✓ B2 ✓ C1 ✓ C2 ✓ &nbsp;|&nbsp; Phase 0 (theory) ✓ → Phase 1 (use cases) ✓
 > **👤 Maintainer:** Xianbiao (XB) Hu · Smart Mobility Lab, The Pennsylvania State University
 > **🧭 Focus:** Not chasing SOTA — characterizing *where and why* VLA driving policies fail, with an eye toward embodied transportation applications (ATMA, CDA, work-zone automation).
 
@@ -40,24 +40,22 @@ The series spine: **VLA = VLM + (action representation) + (closed perception-act
 | UC | Goal | Model / Data |
 |----|------|--------------|
 | **A1** ✓ | Run baseline inference; understand the I/O contract; compute open-loop L2 / collision | OpenDriveVLA-0.5B / nuScenes |
-| **A2** ✓ | Build an action codebook by hand; compare token vs. regression vs. diffusion decoding on the **same** trajectory GT; quantify multimodal coverage (does regression mode-collapse?) | AutoVLA codebook tooling + custom heads / nuScenes |
-| **A3** | LoRA fine-tune the action representation; test whether it learns planning or **memorizes** templated planning QA | AutoVLA / DriveLM |
+| **A2** ✓ | AutoVLA fast-planning baseline on nuScenes; per-sample L2 evaluation and coordinate-frame debugging | AutoVLA / nuScenes |
+| **A3** ✓ | LoRA fine-tune the action representation; test whether it learns planning or **memorizes** templated planning QA | AutoVLA / DriveLM |
 
 **Cluster B — Closed loop & the evaluation illusion** *(what VLA adds, part 2 — the methodological spine)*
 
 | UC | Goal | Model / Data |
 |----|------|--------------|
-| **B1** | Ego-state-only MLP baseline → quantify how much open-loop L2 is mere kinematic extrapolation; turn the "open-loop illusion" into hard evidence | Custom MLP / nuScenes |
-| **B2** | NAVSIM PDMS consequence-aware evaluation → show that open-loop-good can be closed-loop-bad | AutoVLA / NAVSIM (CARLA/Bench2Drive optional) |
+| **B1** ✓ | Ego-state-only MLP baseline → quantify how much open-loop L2 is mere kinematic extrapolation; turn the "open-loop illusion" into hard evidence | Custom MLP / nuScenes |
+| **B2** ✓ | NAVSIM PDMS consequence-aware evaluation → show that open-loop-good can be closed-loop-bad | AutoVLA / NAVSIM |
 
 **Cluster C — Capability boundaries & failure characterization** *(the lab's signature angle; extends prior VLM findings)*
 
 | UC | Goal | Extends prior finding |
 |----|------|-----------------------|
-| **C1** | Is reasoning causal or decorative? Toggle CoT (fast/slow) and check whether the trajectory changes | temporal-language illusion |
-| **C2** | Command following: counterfactually swap the driver command (straight ↔ left) and test whether the action follows | text-compliance dependence |
-| **C3** | Perception grounding: mask / perturb perception inputs and measure action change (scene-blind test) | geometric-reasoning ceiling |
-| **C4** | **Reasoning–action coherence**: detect "says one thing, does another" (verbally yields but trajectory does not) — capstone, strongest publication potential | chain-coherence collapse |
+| **C1** ✓ | Is reasoning causal or decorative? Sensitivity analysis toggling CoT (fast/slow) and measuring trajectory change | temporal-language illusion |
+| **C2** ✓ | Reasoning–action coherence: detect "says one thing, does another" (verbally yields but trajectory does not) | chain-coherence collapse |
 
 ---
 
@@ -91,12 +89,22 @@ Rule of thumb for this series: **OpenDriveVLA gets you in the door (A1); AutoVLA
 ```
 .
 ├── sourcecode/                        # Use-case scripts, configs, and diagnostic tools
-│   ├── usecaseA1_openloop_baseline_opendrivevla/   # A1: OpenDriveVLA open-loop inference on nuScenes (README.md)
-│   └── usecaseA2_openloop_baseline_autovla/        # A2: AutoVLA open-loop baseline on nuScenes (README.md)
+│   ├── usecaseA1_openloop_baseline_opendrivevla/         # A1 (README.md)
+│   ├── usecaseA2_openloop_baseline_autovla/              # A2 (README.md)
+│   ├── usecaseA3_openloop_finetune_autovla/              # A3 (README.md)
+│   ├── usecaseB1-MLP_Baseline_for_Action/                # B1 (README.md)
+│   ├── usecaseB2-NAVSIM Semi-ClosedLoop-Evaluation/      # B2 (README.md)
+│   ├── usecaseC1_faithful_reasoning_sensitivity_analysis/ # C1 (README.md)
+│   └── usecaseC2_faithful_reasoning_action_coherence/    # C2 (README.md)
 │
 ├── outputs/                           # Experiment outputs (mirrors sourcecode/ layout)
 │   ├── usecaseA1_openloop_baseline_opendrivevla/
-│   └── usecaseA2_openloop_baseline_autovla/
+│   ├── usecaseA2_openloop_baseline_autovla/
+│   ├── usecaseA3_openloop_finetune_autovla/
+│   ├── usecaseB1-MLP_Baseline_for_Action/
+│   ├── usecaseB2-NAVSIM Semi-ClosedLoop-Evaluation/
+│   ├── usecaseC1_faithful_reasoning_sensitivity_analysis/
+│   └── usecaseC2_reasoning_action_coherence/
 │
 ├── datasets/                          # nuScenes / DriveLM / NAVSIM (see datasets/README.md)
 │   └── README.md
@@ -124,7 +132,7 @@ cd vla-av
 Each use case requires its own conda environment — there is no single shared env. See the per-usecase README for exact setup steps:
 
 - **A1 (OpenDriveVLA):** Python 3.10, PyTorch 2.1.2+cu121, mmcv 1.7.2 / mmdet3d 1.0.0rc6 — see [A1 README](sourcecode/usecaseA1_openloop_baseline_opendrivevla/README.md)
-- **A2 (AutoVLA):** Python 3.9, PyTorch 2.4.0 — see [A2 README](sourcecode/usecaseA2_openloop_baseline_autovla/README.md)
+- **A2 / A3 / B1 / B2 / C1 / C2 (AutoVLA):** Python 3.9, PyTorch 2.4.0 — see each use case README for specifics
 
 > Tested on Ubuntu with NVIDIA GPUs (CUDA 12.x). Single 12 GB GPU is sufficient for inference; AutoVLA fine-tuning is intended for a multi-GPU workstation (e.g., dual RTX 6000 Ada) or an HPC cluster.
 
@@ -152,8 +160,13 @@ git clone https://github.com/ucla-mobility/AutoVLA.git models/autovla
 
 Each use case has its own scripts and config. See the use case README for the exact command:
 
-- [Use Case A1 — OpenDriveVLA baseline inference](sourcecode/usecaseA1_openloop_baseline_opendrivevla/README.md)
-- [Use Case A2 — AutoVLA action codebook](sourcecode/usecaseA2_openloop_baseline_autovla/README.md)
+- [A1 — OpenDriveVLA open-loop baseline](sourcecode/usecaseA1_openloop_baseline_opendrivevla/README.md)
+- [A2 — AutoVLA open-loop baseline](sourcecode/usecaseA2_openloop_baseline_autovla/README.md)
+- [A3 — AutoVLA LoRA fine-tuning](sourcecode/usecaseA3_openloop_finetune_autovla/README.md)
+- [B1 — MLP kinematic baseline](sourcecode/usecaseB1-MLP_Baseline_for_Action/README.md)
+- [B2 — NAVSIM semi-closed-loop evaluation](sourcecode/usecaseB2-NAVSIM%20Semi-ClosedLoop-Evaluation/README.md)
+- [C1 — Faithful reasoning sensitivity analysis](sourcecode/usecaseC1_faithful_reasoning_sensitivity_analysis/README.md)
+- [C2 — Reasoning–action coherence](sourcecode/usecaseC2_faithful_reasoning_action_coherence/README.md)
 
 ---
 
