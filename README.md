@@ -104,7 +104,7 @@ Rule of thumb for this series: **OpenDriveVLA gets you in the door (A1); AutoVLA
 │   ├── usecaseB1-MLP_Baseline_for_Action/
 │   ├── usecaseB2-NAVSIM Semi-ClosedLoop-Evaluation/
 │   ├── usecaseC1_faithful_reasoning_sensitivity_analysis/
-│   └── usecaseC2_reasoning_action_coherence/
+│   └── usecaseC2_faithful_reasoning_action_coherence/
 │
 ├── datasets/                          # nuScenes / DriveLM / NAVSIM (see datasets/README.md)
 │   └── README.md
