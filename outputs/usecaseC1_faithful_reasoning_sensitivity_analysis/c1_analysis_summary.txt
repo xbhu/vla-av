@@ -1,0 +1,23 @@
+=== Experiment 0: Noise floor ===
+count    20.000000
+mean      0.008927
+std       0.039923
+min       0.000000
+25%       0.000000
+50%       0.000000
+75%       0.000000
+max       0.178539
+Name: endpoint_l2_noise_floor, dtype: float64
+
+=== Experiment 1: CoT on/off ===
+endpoint_l2_cot_off: n=138, mean=0.363m, median=0.000m, p95=1.600m, Wilcoxon p=4.648e-06
+mean_l2_cot_off: n=138, mean=0.133m, median=0.000m, p95=0.366m, Wilcoxon p=4.648e-06
+
+=== Experiment 2: Instruction counterfactual ===
+endpoint_l2_instr_cf1: n=137, mean=2.617m, median=1.517m, p95=8.951m, Wilcoxon p=2.269e-23
+endpoint_l2_instr_cf2: n=137, mean=5.410m, median=2.836m, p95=19.845m, Wilcoxon p=3.364e-24
+
+=== Experiment 3: Perception masking ===
+endpoint_l2_perception_mask: n=138, mean=6.402m, median=4.154m, p95=16.170m, Wilcoxon p=2.156e-24
+
+Noise floor median: 0.000m
