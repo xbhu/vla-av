@@ -1,0 +1,65 @@
+CSV row count: 138
+Scenes with NO explicit 'Best Driving Action' statement at all: 15/138 (10.9%)
+(these are excluded from all agreement stats below -- there is nothing to compare)
+Scenes where lateral is N/A because the stated action is just 'stop': 7/138 (5.1%)
+(excluded from lateral agreement, but STILL included in longitudinal agreement)
+
+=== Lateral action agreement ===
+Total scenes: 138
+Scenes with a scoreable comparison: 112 (81.2%)
+Agreement rate: 73/112 = 65.2%
+
+--- Lateral confusion matrix (rows = stated, cols = trajectory) ---
+trajectory    change lane to left  change lane to right  ...  turn left  turn right
+stated                                                   ...                       
+move forward                    7                     7  ...          4           0
+turn left                       5                     0  ...         11           0
+turn right                      1                     4  ...          1           3
+
+[3 rows x 5 columns]
+
+=== Longitudinal action agreement ===
+Total scenes: 138
+Scenes with a scoreable comparison: 121 (87.7%)
+Agreement rate: 26/121 = 21.5%
+
+--- Longitudinal confusion matrix (rows = stated, cols = trajectory) ---
+trajectory               acceleration  deceleration  ...  quick deceleration  stop
+stated                                               ...                          
+acceleration                        4             0  ...                   0     0
+deceleration                        5             7  ...                   2     1
+deceleration to zero                5             0  ...                   0     1
+maintain constant speed             8             4  ...                   1     0
+quick acceleration                  1             0  ...                   0     0
+stop                                5             1  ...                   0     0
+
+[6 rows x 7 columns]
+
+=== Lateral AND longitudinal both agree ===
+13/112 = 11.6%
+
+=== Longitudinal mismatch pairs (stated -> actual), to check for a systematic direction ===
+stated_longitudinal      traj_longitudinal      
+deceleration to zero     quick acceleration         21
+deceleration             maintain constant speed     9
+maintain constant speed  acceleration                8
+stop                     quick acceleration          8
+maintain constant speed  quick acceleration          6
+stop                     acceleration                5
+                         maintain constant speed     5
+deceleration to zero     acceleration                5
+deceleration             acceleration                5
+acceleration             quick acceleration          4
+maintain constant speed  deceleration                4
+deceleration             deceleration to zero        3
+deceleration to zero     maintain constant speed     2
+deceleration             quick deceleration          2
+stop                     deceleration to zero        1
+                         deceleration                1
+deceleration             quick acceleration          1
+quick acceleration       acceleration                1
+maintain constant speed  quick deceleration          1
+deceleration to zero     stop                        1
+deceleration             stop                        1
+maintain constant speed  deceleration to zero        1
+dtype: int64
