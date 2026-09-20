@@ -1,10 +1,5 @@
 # VLA for Autonomous Driving — A Systematic Learning & Research Series
 
-> **🗂️ Status:** Complete — A1 ✓ A2 ✓ A3 ✓ B1 ✓ B2 ✓ C1 ✓ C2 ✓ &nbsp;|&nbsp; Phase 0 (theory) ✓ → Phase 1 (use cases) ✓
-> **👤 Maintainer:** Xianbiao (XB) Hu · Smart Mobility Lab, The Pennsylvania State University
-> **🧭 Focus:** Not chasing SOTA — characterizing *where and why* VLA driving policies fail, with an eye toward embodied transportation applications (ATMA, CDA, work-zone automation).
-
----
 
 ## Overview
 
