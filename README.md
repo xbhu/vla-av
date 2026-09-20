@@ -34,23 +34,23 @@ The series spine: **VLA = VLM + (action representation) + (closed perception-act
 
 | UC | Goal | Model / Data |
 |----|------|--------------|
-| **A1** ✓ | Run baseline inference; understand the I/O contract; compute open-loop L2 / collision | OpenDriveVLA-0.5B / nuScenes |
-| **A2** ✓ | AutoVLA fast-planning baseline on nuScenes; per-sample L2 evaluation and coordinate-frame debugging | AutoVLA / nuScenes |
-| **A3** ✓ | LoRA fine-tune the action representation; test whether it learns planning or **memorizes** templated planning QA | AutoVLA / DriveLM |
+| **A1** | Run baseline inference; understand the I/O contract; compute open-loop L2 / collision | OpenDriveVLA-0.5B / nuScenes |
+| **A2** | AutoVLA fast-planning baseline on nuScenes; per-sample L2 evaluation and coordinate-frame debugging | AutoVLA / nuScenes |
+| **A3** | LoRA fine-tune the action representation; test whether it learns planning or **memorizes** templated planning QA | AutoVLA / DriveLM |
 
 **Cluster B — Closed loop & the evaluation illusion** *(what VLA adds, part 2 — the methodological spine)*
 
 | UC | Goal | Model / Data |
 |----|------|--------------|
-| **B1** ✓ | Ego-state-only MLP baseline → quantify how much open-loop L2 is mere kinematic extrapolation; turn the "open-loop illusion" into hard evidence | Custom MLP / nuScenes |
-| **B2** ✓ | NAVSIM PDMS consequence-aware evaluation → show that open-loop-good can be closed-loop-bad | AutoVLA / NAVSIM |
+| **B1** | Ego-state-only MLP baseline → quantify how much open-loop L2 is mere kinematic extrapolation; turn the "open-loop illusion" into hard evidence | Custom MLP / nuScenes |
+| **B2** | NAVSIM PDMS consequence-aware evaluation → show that open-loop-good can be closed-loop-bad | AutoVLA / NAVSIM |
 
 **Cluster C — Capability boundaries & failure characterization** *(the lab's signature angle; extends prior VLM findings)*
 
 | UC | Goal | Extends prior finding |
 |----|------|-----------------------|
-| **C1** ✓ | Is reasoning causal or decorative? Sensitivity analysis toggling CoT (fast/slow) and measuring trajectory change | temporal-language illusion |
-| **C2** ✓ | Reasoning–action coherence: detect "says one thing, does another" (verbally yields but trajectory does not) | chain-coherence collapse |
+| **C1** | Is reasoning causal or decorative? Sensitivity analysis toggling CoT (fast/slow) and measuring trajectory change | temporal-language illusion |
+| **C2** | Reasoning–action coherence: detect "says one thing, does another" (verbally yields but trajectory does not) | chain-coherence collapse |
 
 ---
 
